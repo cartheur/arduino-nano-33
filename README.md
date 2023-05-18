@@ -10,7 +10,7 @@ serial via USB.
 
 ```sh
 arduino-cli core install arduino:samd
-cargo install cargo-binutils
+cargo install cargo-binutils cargo-make
 rustup component add llvm-tools-preview
 ```
 
