@@ -25,7 +25,7 @@ pub unsafe fn setup_usb(
     let bus_allocator = USB_ALLOCATOR.as_ref().unwrap();
     USB_SERIAL = Some(SerialPort::new(bus_allocator));
     USB_BUS = Some(
-        UsbDeviceBuilder::new(bus_allocator, UsbVidPid(0x2222, 0x3333))
+        UsbDeviceBuilder::new(bus_allocator, UsbVidPid(0x1311, 0x0437))
             .manufacturer("The Cartheur Company")
             .product("Serial port")
             .serial_number("A2435TZS")
