@@ -1,0 +1,30 @@
+[tasks.build]
+command = "cargo"
+args = [
+    "build"
+]
+
+[tasks.postbuild]
+command = "cargo"
+args = [
+    "objcopy",
+    "--bin",
+    "${CARGO_MAKE_PROJECT_NAME}",
+    "--",
+    "-O",
+    "binary",
+    "${CARGO_MAKE_CRATE_TARGET_DIRECTORY}/arduino.bin"
+]
+
+[tasks.flash]
+dependencies = [
+    #"build",
+    "postbuild"    
+]
+command = "arduino-cli"
+args = [
+    "upload",
+    "-b", "arduino:samd:nano_33_iot",
+    "-p", "/dev/ttyACM0", # NOTE: Change this port on your machine.
+    "-i", "${CARGO_MAKE_CRATE_TARGET_DIRECTORY}/arduino.bin"
+]
